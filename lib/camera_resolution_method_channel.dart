@@ -20,6 +20,30 @@ class MethodChannelCameraResolution extends CameraResolutionPlatform {
   Future<List<Map<String, dynamic>>> getCameraInfo() async {
     final List<dynamic> cameras =
         await methodChannel.invokeMethod('getCameraInfo');
-    return cameras.cast<Map<String, dynamic>>();
+    return compute(
+      (value) =>
+          value.map((camera) => _convertToMapStringDynamic(camera)).toList(),
+      cameras,
+    );
+  }
+
+  Map<String, dynamic> _convertToMapStringDynamic(
+    Map<dynamic, dynamic> original,
+  ) {
+    final result = <String, dynamic>{};
+    original.forEach((key, value) {
+      result[key.toString()] = _convertValue(value);
+    });
+    return result;
+  }
+
+  dynamic _convertValue(dynamic value) {
+    if (value is Map) {
+      return _convertToMapStringDynamic(value);
+    } else if (value is List) {
+      return value.map((item) => _convertValue(item)).toList();
+    } else {
+      return value;
+    }
   }
 }
