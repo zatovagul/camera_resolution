@@ -23,10 +23,6 @@ abstract class CameraResolutionPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
-  }
-
   Future<List<Map<String, dynamic>>> getCameraInfo() {
     throw UnimplementedError('getCameraInfo() has not been implemented.');
   }

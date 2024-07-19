@@ -10,13 +10,6 @@ class MethodChannelCameraResolution extends CameraResolutionPlatform {
   final methodChannel = const MethodChannel('camera_resolution');
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version =
-        await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
-  }
-
-  @override
   Future<List<Map<String, dynamic>>> getCameraInfo() async {
     final List<dynamic> cameras =
         await methodChannel.invokeMethod('getCameraInfo');

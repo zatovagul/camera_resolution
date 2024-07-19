@@ -7,7 +7,6 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockCameraResolutionPlatform
     with MockPlatformInterfaceMixin
     implements CameraResolutionPlatform {
-
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
 
@@ -19,7 +18,8 @@ class MockCameraResolutionPlatform
 }
 
 void main() {
-  final CameraResolutionPlatform initialPlatform = CameraResolutionPlatform.instance;
+  final CameraResolutionPlatform initialPlatform =
+      CameraResolutionPlatform.instance;
 
   test('$MethodChannelCameraResolution is the default instance', () {
     expect(initialPlatform, isInstanceOf<MethodChannelCameraResolution>());
@@ -29,7 +29,5 @@ void main() {
     CameraResolution cameraResolutionPlugin = CameraResolution();
     MockCameraResolutionPlatform fakePlatform = MockCameraResolutionPlatform();
     CameraResolutionPlatform.instance = fakePlatform;
-
-    expect(await cameraResolutionPlugin.getPlatformVersion(), '42');
   });
 }
