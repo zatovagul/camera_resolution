@@ -35,14 +35,6 @@ class _MyAppState extends State<MyApp> {
     //   platformVersion = 'Failed to get platform version.';
     // }
 
-    try {
-      final a = await _cameraResolutionPlugin.getCameraInfo();
-      print(a);
-      print(a);
-    } catch (e) {
-      print(e);
-    }
-
     if (!mounted) return;
 
     // setState(() {
