@@ -14,16 +14,4 @@ class CameraResolution {
       return r;
     }).toList();
   }
-
-  Future<List<MediaDeviceInfo>> getDevices() async {
-    final list = await getCameraInfo();
-
-    for(var i in list){
-      print(i);
-    }
-    return list.map<MediaDeviceInfo>((e) {
-      final r = MediaDeviceInfo.fromJson(e);
-      return r;
-    }).toList();
-  }
 }
