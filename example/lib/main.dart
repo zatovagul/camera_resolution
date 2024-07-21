@@ -28,12 +28,12 @@ class _MyAppState extends State<MyApp> {
   Future<void> initPlatformState() async {
     String platformVersion;
 
-    // try {
-    //   platformVersion = await _cameraResolutionPlugin.getPlatformVersion() ??
-    //       'Unknown platform version';
-    // } on PlatformException {
-    //   platformVersion = 'Failed to get platform version.';
-    // }
+    try {
+      final devices = await CameraResolution.getDevices();
+      print(devices);
+    } on PlatformException {
+      platformVersion = 'Failed to get platform version.';
+    }
 
     if (!mounted) return;
 

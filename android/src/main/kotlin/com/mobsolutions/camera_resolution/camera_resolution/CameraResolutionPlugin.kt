@@ -44,7 +44,7 @@ class CameraResolutionPlugin : FlutterPlugin, MethodCallHandler {
                 val cameraInfo = mutableMapOf<String, Any>()
                 cameraInfo["cameraId"] = cameraId
                 val lensFacing = characteristics.get(CameraCharacteristics.LENS_FACING)
-                cameraInfo["lensFacing"] = when (lensFacing) {
+                cameraInfo["facingMode"] = when (lensFacing) {
                     CameraCharacteristics.LENS_FACING_FRONT -> "front"
                     CameraCharacteristics.LENS_FACING_BACK -> "back"
                     else -> "unknown"
